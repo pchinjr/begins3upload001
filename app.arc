@@ -1,8 +1,12 @@
 @app
 begin-app
 
+@static
+fingerprint true
+
 @http
 get /
+post /upload
 
 @tables
 data
