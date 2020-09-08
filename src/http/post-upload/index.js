@@ -17,6 +17,6 @@ exports.handler = async function http(req) {
     headers: {
       'content-type': 'image/jpeg'
     },
-    body: decoded,
+    body: JSON.stringify(decoded),
   }
 }
