@@ -5,7 +5,6 @@ begin-app
 fingerprint true
 
 @http
-get /
 post /upload
 
 @tables
