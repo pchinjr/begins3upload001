@@ -65,7 +65,7 @@ function uploadPhoto() {
     }
   })
   .then(blob => blob.json())
-  .then(res => console.log(`serverside - ${res.data}`))
+  .then(res => console.log(`serverside - ${res}`))
   .catch(err => console.error(err))
 }
 
