@@ -56,7 +56,7 @@ function takePhoto() {
 function uploadPhoto() {
   // take the data out of the canvas
   const data = canvas.toDataURL();
-  console.log(`clientside - ${data.data}`)
+  console.log(`clientside - ${data}`)
   fetch('/upload', {
     method: "POST",
     body: JSON.stringify({"data": data}),
@@ -65,7 +65,7 @@ function uploadPhoto() {
     }
   })
   .then(blob => blob.json())
-  .then(res => console.log(`serverside - ${res}`))
+  .then(res => console.log(`serverside - ${res.data}`))
   .catch(err => console.error(err))
 }
 
