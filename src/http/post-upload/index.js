@@ -26,6 +26,8 @@ exports.handler = async function http(req) {
       ContentType: `image/jpeg`,
       CacheControl: 'max-age=315360000',
     })
+    console.log(process.env.ARC_STATIC_FOLDER)
+    console.log(process.env.ARC_STATIC_BUCKET)
   }
 
   return {
