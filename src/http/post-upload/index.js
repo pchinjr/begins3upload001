@@ -11,29 +11,10 @@ exports.handler = async function http(req) {
   let secondBuff = Buffer.from(b64, 'base64')
   let decoded = secondBuff.toString('utf8') //still not decoded
 
-  if (process.env.NODE_ENV === 'testing') {
-    let pathToPublic = path.join(__dirname, '..', '..', '..', 'public', 'image.jpg')
-    fs.writeFileSync(pathToPublic, decoded)
-  }
-  else {
-    // write to s3
-    let s3 = new aws.S3
-    await s3.putObject({
-      ACL: 'public-read',
-      Bucket: process.env.ARC_STATIC_BUCKET,
-      Key: `${process.env.ARC_STATIC_FOLDER}/image.jpg`,
-      Body: decoded,
-      ContentType: `image/jpeg`,
-      CacheControl: 'max-age=315360000',
-    })
-    console.log(process.env.ARC_STATIC_FOLDER)
-    console.log(process.env.ARC_STATIC_BUCKET)
-  }
-
   return {
     statusCode: 200,
     headers: {
-      'content-type': 'image/jpeg'
+      'content-type': 'image/png'
     },
     body: JSON.stringify(decoded),
   }
